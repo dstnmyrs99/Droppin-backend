@@ -5,11 +5,13 @@ const knex = require('./db/connection');
 const app = express();
 const cors= require('cors');
 const placesRouter = require('./places/placesRouter');
+const usersRouter = require('./users/usersRouter');
 
 app.use(cors());
 app.use(express.json());
 app.set("knex", knex);
 app.use('/places', placesRouter);
+app.use('/users', usersRouter);
 
 
 // Not found handler
