@@ -1,14 +1,12 @@
 /* eslint-disable strict */
 const router = require("express").Router({ mergeParams: true });
-const controller = require("./usersController");
+const controller = require("./reviewsController");
 const methodNotAllowed = require("../errors/methodNotAllowed");
 
 router
   .route("/")
-  .get(controller.listAllUsers)
-  .post(controller.createUser)
+  .get(controller.listAllReviews)
+  .post(controller.createReview)
   .all(methodNotAllowed);
-
-router.route("/:user_name").post(controller.getUser).all(methodNotAllowed);
 
 module.exports = router;

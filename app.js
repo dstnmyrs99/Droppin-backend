@@ -6,12 +6,14 @@ const app = express();
 const cors= require('cors');
 const placesRouter = require('./places/placesRouter');
 const usersRouter = require('./users/usersRouter');
+const reviewsRouter = require('./reviews/reviewsRouter');
 
 app.use(cors());
 app.use(express.json());
 app.set("knex", knex);
 app.use('/places', placesRouter);
 app.use('/users', usersRouter);
+app.use('/reviews', reviewsRouter);
 
 
 // Not found handler

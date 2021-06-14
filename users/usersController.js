@@ -23,6 +23,7 @@ const createUser = async (req, res, next)=>{
 
 const getUser = async (req,res,next) =>{
     const user = req.params.user_name;
+    if(!user) return next({});
     const userInfo = await service.getUser(req.app.get("knex"), user);
     res.locals.user = userInfo;
     next();
@@ -32,7 +33,7 @@ const authorizeUser = async (req,res,next)=>{
     const password = req.body.password;
     const userInfo = res.locals.user;
     if(userInfo.length && password === userInfo[0].password){
-        res.json(userInfo[0].user_name);
+        res.json(userInfo[0]);
     }else{
         next({
             status: 401,
